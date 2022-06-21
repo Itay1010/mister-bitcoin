@@ -1,0 +1,26 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
+  "exclude": ["node_modules", "build/**/*"],
+  "compilerOptions": {
+    "noImplicitThis": true,
+    "sourceMap": true,
+    "noEmitOnError": true,
+    "removeComments": true,
+    "allowJs": true,
+    "outDir": "build",
+    "watch": true,
+    "baseUrl": ".",
+    "isolatedModules": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": []
+  },
+
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

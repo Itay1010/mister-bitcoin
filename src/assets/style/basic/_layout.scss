@@ -1,0 +1,16 @@
+.main-leyout {
+    display: grid;
+    grid-template-columns: $side-margin 1fr $side-margin;
+    grid-template-rows: 60px repeat(auto-fit, minmax(100px, 100%));
+    height: 100vh;
+
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+.center {
+    grid-column: 2 / 3;
+    
+}

@@ -1,0 +1,8 @@
+.contact-details {
+    text-align: center;
+    .tools {
+        &>* {
+            margin: 0 10px;
+        }
+    }
+}
