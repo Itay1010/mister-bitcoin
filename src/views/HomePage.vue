@@ -1,6 +1,7 @@
 <template>
     <div class="home-wrapper center">
         <section class="user-info">
+            <img :src="user.imgUrl" alt="">
             <h3>hello {{ user.name }}</h3>
             <h4>Coins: {{ user.coins }}</h4>
             <h4>BTC: {{btcRate}}</h4>
@@ -26,6 +27,3 @@ export default {
     }
 }
 </script>
-
-<style lang="scss">
-</style>

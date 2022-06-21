@@ -5,7 +5,6 @@
   "compilerOptions": {
     "noImplicitThis": true,
     "sourceMap": true,
-    "noEmitOnError": true,
     "removeComments": true,
     "allowJs": true,
     "outDir": "build",

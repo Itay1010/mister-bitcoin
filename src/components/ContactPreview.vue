@@ -10,9 +10,6 @@
 </template>
 
 <script>
-import { Transition } from 'vue'
-
-
 export default {
     props: {
         contact: {
@@ -36,24 +33,20 @@ export default {
 </script>
 
 <style>
+.contacts-preview {}
+
 .fade-enter-active {
     transition: all 0.3s ease;
 }
 
 .fade-leave-active {
-    transition: all 0.1s ease;
+    transition: all 0.2s ease;
 }
 
-
+.fade-leave-to,
 .fade-enter-from {
     opacity: 0;
+    transform: rotate(90deg);
     pointer-events: none;
-    transform: rotateX(50deg);
-}
-
-.fade-leave-to {
-    opacity: 0;
-    pointer-events: all;
-    transform: rotateX(0deg);
 }
 </style>

@@ -3,6 +3,9 @@
     .tools {
         &>* {
             margin: 0 10px;
+            background-color: $secondary1;
+            padding: 5px 10px;
+            border-radius: 2px;
         }
     }
 }

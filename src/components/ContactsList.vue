@@ -3,7 +3,7 @@
         <ContactPreview v-for="contact in contacts" :contact="contact" :key="contact._id"
         @delete="id => $emit('delete', id)"
         />
-        <button class="add-btn" @click="$router.push('/contact/edit')">+Add</button>
+        <button class="add-btn" @click="$router.push('/contact/edit')">Add</button>
     </div>
 </template>
 

@@ -2,9 +2,12 @@
     .add-btn {
         position: absolute;
         right: 0;
-        padding: 6px;
+        padding: 10px;
         border-radius: 50%;
         aspect-ratio: 1/1;
+        background-color: $secondary1;
+        color: $primary2;
+        text-shadow: 0 0 6px #00000036;
         border: none;
         cursor: pointer;
     }

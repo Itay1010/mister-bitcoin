@@ -1,9 +1,15 @@
 .home-wrapper {
     .user-info {
-        background-color: lightgray;
+        background-color: $primary3-l2;
         width: fit-content;
-        padding: 20px;
+        padding: 25px;
         margin: auto;
         margin-top: 50px;
+        border-radius: 3px;
+        img {
+            width: 200px;
+            margin-top: -30px;
+            border-radius: 50%;
+        }
     }
 }
