@@ -1,0 +1,16 @@
+.move-list {
+    .move-preview {
+        background-color: $secondary2;
+        margin-bottom: 20px;
+        padding: 10px 20px;
+        &>* {
+
+        }
+        p {
+            margin: 10px;
+            span {
+                font-weight: 600;
+            }
+        }
+    }
+}

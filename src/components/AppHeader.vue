@@ -15,7 +15,9 @@
 
 <script>
 export default {
-
+    created() {
+        if(!this.$store.getters.user) this.$store.dispatch({type: 'loadUser'})
+    }
 }
 
 </script>

@@ -15,8 +15,7 @@ const remove = async (contactId: string) => {
 const save = async (contact: { [key: string]: any }): Promise<object> => {
     if (!contact._id) {
         contact._id = utilService.makeId(20)
-        console.log(contact.imgUrl.replace('holder', contact.name))
-        
+        console.log('new contact', contact.name)
         return contact
     }
     return contact
@@ -24,7 +23,7 @@ const save = async (contact: { [key: string]: any }): Promise<object> => {
 
 function getEmptyContact() {
     return {
-        name: 'roboName',
+        name: 'Robo Name',
         email: '',
         phone: '',
         imgUrl: `https://robohash.org/holder.org?gravatar=yes`

@@ -1,12 +1,12 @@
 import { createStore } from 'vuex'
 import contacts from './modules/contact'
+import user from './modules/user'
 
 const storeOptions = {
     strict: true,
-    state: {
-    },
     modules:{
-        contacts
+        contacts,
+        user
     }
 }
 const store = createStore(storeOptions)

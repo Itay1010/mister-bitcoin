@@ -3,13 +3,18 @@
         background-color: $primary3-l2;
         width: fit-content;
         padding: 25px;
-        margin: auto;
-        margin-top: 50px;
+        margin: 50px auto;
         border-radius: 3px;
+        &>*:not(:last-child) {
+            margin-bottom: 20px;
+        }
         img {
             width: 200px;
             margin-top: -30px;
             border-radius: 50%;
         }
+    }
+    .move-title {
+        margin-bottom: 20px;
     }
 }

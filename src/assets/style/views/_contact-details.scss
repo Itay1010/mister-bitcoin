@@ -1,6 +1,29 @@
 .contact-details {
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: fit-content;
+
+}
+
+.details-container {
+    max-width: 700px;
+    text-align: left;
+    margin-bottom: 50px;
+
+    &>*:not(:last-child) {
+        margin: 20px;
+    }
+
+    .contact-img {
+        min-width: 30%;
+        max-width: 250px;
+    }
+
     .tools {
+        text-align: center;
+
         &>* {
             margin: 0 10px;
             background-color: $secondary1;

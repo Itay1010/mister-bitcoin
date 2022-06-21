@@ -3,20 +3,23 @@
         "_id": "5a56640269f443a5d64b32ca",
         "name": "Spike Spiegel",
         "email": "bebop@gmail.com",
+        "coins": "100",
         "phone": "202-555-0188",
         "imgUrl": "https://robohash.org/SpikeSpiegel.org?gravatar=yes"
     },
     {
         "_id": "5a5664fs0269f443a5d64b32ca",
-        "name": "Iago Shweta",
-        "email": "iagoshweta@gmail.com",
+        "name": "Mark Hamill",
+        "email": "Loki@gmail.com",
+        "coins": "100",
         "phone": "202-555-0150",
-        "imgUrl": "https://robohash.org/IagoShweta.org?gravatar=yes"
+        "imgUrl": "https://robohash.org/MarkHamill.org?gravatar=yes"
     },
     {
         "_id": "5a566402fsa69f443a5d64b32ca",
         "name": "William Gibson ",
         "email": "william_G@gmail.com",
+        "coins": "100",
         "phone": "202-555-0106",
         "imgUrl": "https://robohash.org/WilliamGibson.org?gravatar=yes"
     },
@@ -24,6 +27,7 @@
         "_id": "5a56640269fas443a5d64b32ca",
         "name": "Mark Robert",
         "email": "Mark@gmail.com",
+        "coins": "100",
         "phone": "202-555-0130",
         "imgUrl": "https://robohash.org/MarkRobert.org?gravatar=yes"
     },
@@ -31,6 +35,7 @@
         "_id": "5a56640269f4fsa43a5d64b32ca",
         "name": "Jim Jefferies",
         "email": "jimjef@gmail.com",
+        "coins": "100",
         "phone": "202-555-0117",
         "imgUrl": "https://robohash.org/Jim-Jefferies.org?gravatar=yes"
     }

@@ -17,7 +17,6 @@ export default {
             state: any,
             { contact }: { [key: string]: { [key: string]: any } }
         ) {
-            console.log('contact', contact)
             const contactId = contact._id
             const idx: number = state.contacts.findIndex((contact: { [key: string]: any }) => contact._id === contactId)
             if (idx === -1) {
@@ -52,6 +51,21 @@ export default {
                 const savedContact = await contactService.save(contact)
                 commit({ type: 'saveContact', contact: savedContact })
             } catch (error) {
+                throw error
+            }
+        },
+        async updateContactFunds(context: any, { payload }: { payload: { contactId: string, diff: number, [key: string]: any } }) {
+            try {
+                const contact: { [key: string]: any } | undefined = context.getters.contacts.find(
+                    (contact: { [key: string]: any }) => contact._id === payload.contactId
+                )
+                if (!contact) throw new Error('contact not found')
+                const contactToSave = JSON.parse(JSON.stringify(contact))
+                contactToSave.coins += payload.diff
+                const savedContact = await contactService.save(contactToSave)
+                context.commit({ type: 'saveContact', contact: savedContact })
+            } catch (error) {
+                console.error('updateContactFunds - error', error)
                 throw error
             }
         }
