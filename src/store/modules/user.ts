@@ -41,12 +41,11 @@ export default {
             }
         },
         async updateUserFunds(context: any, { payload }: { diff: number, move: object, [key: string]: any }) {
-            console.log('updateUserFunds - diff', payload.diff)
             try {
                 const userToSave: { [key: string]: any } = JSON.parse(JSON.stringify(context.getters.user))
 
                 userToSave.coins += payload.diff
-                userToSave.moves.push(payload.move)
+                userToSave.moves.unshift(payload.move)
                 const savedUser = await userService.save(userToSave)
                 context.commit({ type: 'setUser', user: savedUser })
             } catch (error) {

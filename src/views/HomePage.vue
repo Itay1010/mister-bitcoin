@@ -6,9 +6,13 @@
             <h4>Coins: {{ user.coins }}</h4>
             <h4>BTC: {{ btcRate }}</h4>
         </section>
-        <h2 class="move-title">Your move<span v-if="user.moves.length > 1">s</span>, {{ user.moves.length }} in total
+        <div class="home-loader" v-else>
+            <h2>Loading...</h2>
+        </div>
+        <h2 class="move-title" v-if="user">
+            Your move<span v-if="user.moves.length > 1">s</span>, {{ user.moves.length }} in total
         </h2>
-        <MoveList :user="user" />
+        <MoveList v-if="user" :user="user" />
     </div>
 </template>
 
