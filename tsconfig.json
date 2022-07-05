@@ -3,7 +3,7 @@
   "include": ["env.d.ts", "src/**/*", "src/**/*.vue"],
   "exclude": ["node_modules", "build/**/*"],
   "compilerOptions": {
-    "noImplicitThis": true,
+    "strict": true,
     "sourceMap": true,
     "removeComments": true,
     "allowJs": true,

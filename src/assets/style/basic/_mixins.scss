@@ -1,0 +1,25 @@
+// Responsiveness mixins
+
+@mixin mobile-layout {
+  @media (max-width: 400px) {
+    @content;
+  }
+}
+
+@mixin narrow-layout {
+  @media (min-width: 400px) {
+    @content;
+  }
+}
+
+@mixin normal-layout {
+  @media (min-width: 745px) {
+    @content;
+  }
+}
+
+@mixin wide-layout {
+  @media (min-width: 1300px) {
+    @content;
+  }
+}

@@ -9,6 +9,11 @@
     margin: 0 $side-margin;
     height: 100%;
 
+    .title {
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+
     .app-nav {
         display: flex;
         gap: 20px;

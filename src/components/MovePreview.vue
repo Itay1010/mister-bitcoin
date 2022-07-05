@@ -1,6 +1,6 @@
 <template>
     <div class="move-preview">
-        <p><span>To:</span> {{ move.contact.name }}</p>
+        <h4><span>To:</span> {{ move.contact.name }}</h4>
         <p><span>Amount:</span> {{ move.amount }} BTC</p>
         <p><span>Date:</span> {{ date }}</p>
     </div>
@@ -16,7 +16,7 @@ export default {
     computed: {
         date() {
             const dateObj = new Date(this.move.date)
-            return dateObj.toLocaleString('he-IL')
+            return dateObj.toLocaleString('he-IL', { day: '2-digit', month: '2-digit', year: 'numeric' })
         }
     }
 

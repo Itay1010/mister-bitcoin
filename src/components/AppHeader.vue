@@ -1,9 +1,9 @@
 <template>
     <div class="header-container full">
         <header class="app-header">
-            <section>
-                <h3>MisterBit(coin)</h3>
-            </section>
+            <router-link to="/">
+                <h3 class="title">MisterBit(coin)</h3>
+            </router-link>
             <nav class="app-nav">
                 <RouterLink to="/">Home</RouterLink>
                 <RouterLink to="/contact">Contacts</RouterLink>
@@ -16,11 +16,8 @@
 <script>
 export default {
     created() {
-        if(!this.$store.getters.user) this.$store.dispatch({type: 'loadUser'})
+        if (!this.$store.getters.user) this.$store.dispatch({ type: 'loadUser' })
     }
 }
 
 </script>
-
-<style lang="scss">
-</style>

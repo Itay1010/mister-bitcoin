@@ -5,6 +5,18 @@
     align-items: center;
     height: fit-content;
 
+    &>* {
+        margin-bottom: 50px;
+    }
+
+    .move-container {
+        width: 70%;
+        
+        .move-list {
+            text-align: center;
+        }
+    }
+
 }
 
 .details-container {

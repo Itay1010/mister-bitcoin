@@ -11,23 +11,31 @@
             </section>
         </div>
         <TransferFund :contact="contact" />
+        <MoveList v-if="contact && userMoves" :moves="userMoves" :filterBy="filterBy" />
     </div>
 </template>
 
 <script>
 import { RouterLink } from 'vue-router'
 import TransferFund from '@/components/TransferFund.vue'
+import MoveList from '@/components/MoveList.vue'
 
 export default {
     data() {
         return {
-            contact: {}
+            contact: {},
+            filterBy: {
+                field: 'contact',
+                nested: '_id',
+                value: this.$route.params.id
+            }
         }
     },
     async created() {
         if (!this.contacts) await this.loadContacts()
         const { id: contactId } = this.$route.params
         const contact = this.contacts.find(contact => contact._id === contactId)
+        this.filterBy.value = contact._id
         this.contact = contact
     },
     methods: {
@@ -36,11 +44,13 @@ export default {
         }
     },
     computed: {
-        contacts() { return this.$store.getters.contacts }
+        contacts() { return this.$store.getters.contacts },
+        userMoves() { return this.$store.getters.user?.moves }
     },
     components: {
         RouterLink,
-        TransferFund
+        TransferFund,
+        MoveList
     }
 }
 </script>

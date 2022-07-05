@@ -1,5 +1,5 @@
 import { contactService } from '@/services/contact.service.js'
-// setting any for properties coming from workframe or lib
+// setting type as any for properties coming from workframe or lib
 export default {
     strict: true,
     state: {

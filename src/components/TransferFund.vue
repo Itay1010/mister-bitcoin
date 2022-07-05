@@ -33,6 +33,7 @@ export default {
                 const prmUser = this.$store.dispatch({ type: 'updateUserFunds', payload: { diff, move } })
                 const prmContact = this.$store.dispatch({ type: 'updateContactFunds', payload: { contactId: this.contact._id, diff: this.amount } })
                 await Promise.all([prmUser, prmContact])
+                this.amount = 0
                 alert(`funds transferred to ${this.contact.name}\n${this.$store.getters.user.coins} coins remaining`)
             } catch (error) {
                 console.error(error)

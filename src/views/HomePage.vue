@@ -9,10 +9,12 @@
         <div class="home-loader" v-else>
             <h2>Loading...</h2>
         </div>
-        <h2 class="move-title" v-if="user">
-            Your move<span v-if="user.moves.length > 1">s</span>, {{ user.moves.length }} in total
-        </h2>
-        <MoveList v-if="user" :user="user" />
+        <div class="home-moves">
+            <h2 class="move-title" v-if="user">
+                Your transaction<span v-if="user.moves.length > 1">s</span>, {{ user.moves.length }} in total
+            </h2>
+            <MoveList v-if="user" :moves="user.moves" :title="''" />
+        </div>
     </div>
 </template>
 
