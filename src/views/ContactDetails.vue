@@ -1,4 +1,5 @@
 <template>
+    <AppHeader />
     <div class="contact-details full">
         <div class="details-container">
             <img class="contact-img" :src="contact.imgUrl" alt="">
@@ -19,7 +20,7 @@
 import { RouterLink } from 'vue-router'
 import TransferFund from '@/components/TransferFund.vue'
 import MoveList from '@/components/MoveList.vue'
-
+import AppHeader from '@/components/AppHeader.vue'
 export default {
     data() {
         return {
@@ -50,7 +51,8 @@ export default {
     components: {
         RouterLink,
         TransferFund,
-        MoveList
+        MoveList,
+        AppHeader
     }
 }
 </script>

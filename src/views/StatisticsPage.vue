@@ -1,4 +1,5 @@
 <template>
+    <AppHeader />
     <div class="chart-container full">
         <MarketChart :chartData="priceChartConfig.chartData" :chart-options="priceChartConfig.chartOptions"
             :chartName="'Average price this year'" />
@@ -10,11 +11,8 @@
 <script>
 import MarketChart from '@/components/MarketChart.vue'
 import { bitcoinService } from '@/services/bitcoin.service'
-
+import AppHeader from '@/components/AppHeader.vue'
 export default {
-    components: {
-        MarketChart
-    },
     async created() {
         this.initPriceChart()
         this.initTradeChart()
@@ -107,5 +105,9 @@ export default {
             return ordered
         }
     },
+    components: {
+        MarketChart,
+        AppHeader
+    }
 }
 </script>

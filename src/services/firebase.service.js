@@ -1,10 +1,10 @@
 import { getFirestore, collection, getDocs, addDoc, query, where, getDoc, doc, setDoc, limit, startAfter, orderBy, deleteDoc, onSnapshot }
     from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"
-
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+import store from "@/store";
 const pageSize = 8
 var gLastDocForPaging = null
-
 
 export const firebaseService = {
     initFirebase,
@@ -12,7 +12,9 @@ export const firebaseService = {
     getDocument,
     addDocument,
     saveDocument,
-    subscribe
+    subscribe,
+    signup,
+    getUser
 }
 
 async function initFirebase() {
@@ -28,6 +30,8 @@ async function initFirebase() {
     // Initialize Firebase
     const app = initializeApp(firebaseConfig)
 
+    //Initialize Auth
+    const auth = getAuth(app)
 
     // debug:
     window.tsayriliApp = app
@@ -37,7 +41,6 @@ async function addDocument(collectionName, document) {
     const db = getFirestore()
     try {
         const docRef = await addDoc(collection(db, collectionName), document)
-        // console.log("Doc saved. id: ", docRef.id)
         return docRef
     } catch (err) {
         console.error("Error adding document: ", err)
@@ -64,7 +67,7 @@ async function saveDocument(collectionName, document, id) {
 }
 
 async function getDocuments(collectionName, filterBy) {
-
+    console.log('getDocuments - filterBy', filterBy)
     const db = getFirestore()
     var collectionRef = collection(db, collectionName)
     var orderByParams = []
@@ -81,17 +84,24 @@ async function getDocuments(collectionName, filterBy) {
     return docs
 }
 
-
 function subscribe(collectionName, cb) {
     const db = getFirestore()
     const unsub = onSnapshot(collection(db, collectionName), (querySnapshot) => {
         const docs = []
-        // console.log("Current data: ", querySnapshot.docs)
         querySnapshot.forEach((doc) => {
-            // console.log(`${doc.id} => ${JSON.stringify(doc.data())}`)
             docs.push({ id: doc.id, ...doc.data() })
         })
         cb(docs)
     })
+}
 
+async function signup(email, password) {
+    const auth = getAuth()
+    const res = await createUserWithEmailAndPassword(auth, email, password)
+    return res.user.uid
+}
+
+function getUser() {
+    const auth = getAuth()
+    return auth.currentUser
 }

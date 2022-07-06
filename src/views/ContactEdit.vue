@@ -1,5 +1,6 @@
 
 <template>
+    <AppHeader />
     <div class="edit-wrapper center">
         <form class="contact-edit" @submit.prevent="onSave">
             <section class="form-section">
@@ -27,7 +28,7 @@
 <script>
 import { contactService } from '@/services/contact.service'
 import { RouterLink } from 'vue-router'
-
+import AppHeader from '@/components/AppHeader.vue'
 export default {
     data() {
         return {
@@ -60,7 +61,8 @@ export default {
         }
     },
     components: {
-        RouterLink
+        RouterLink,
+        AppHeader
     }
 }
 </script>

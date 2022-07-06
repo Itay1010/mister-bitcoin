@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomePage from "@/views/HomePage.vue";
 import ContactEdit from "@/views/ContactEdit.vue";
 import ContactDetails from "@/views/ContactDetails.vue";
+import Signup from "@/views/Signup.vue";
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -9,6 +10,16 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomePage
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: Signup
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: Signup
     },
     {
       path: '/contact',

@@ -1,6 +1,5 @@
 <template>
     <main class="main-wrapper main-leyout">
-        <AppHeader />
         <UserMsg />
         <RouterView />
     </main>

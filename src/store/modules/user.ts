@@ -1,3 +1,4 @@
+import type { User } from "@/modules"
 import { userService } from "@/services/user.service"
 
 export default {
@@ -14,13 +15,18 @@ export default {
         },
     },
     actions: {
-        async loadUser({ commit }: { commit: Function }): Promise<void> {
+        async loadUser({ commit }: { commit: Function }, { id }: { id: string }): Promise<void> {
             try {
-                const user = await userService.getUser()
+                const user = await userService.getUserProfile(id)
+                console.log('loadUser - user', user)
                 commit({ type: 'setUser', user })
             } catch (error) {
+                console.log('loadUser - error')
                 throw error
             }
+        },
+        setUser({ commit }: { commit: Function }, { user }: { user: User }) {
+            commit({ type: 'setUser', user })
         },
         removeUser({ commit }: { commit: Function }) {
             try {

@@ -1,4 +1,5 @@
 <template>
+    <AppHeader />
     <div class="contact-wrapper center">
         <ContactsList v-if="contacts" :contacts="contacts" @delete="onDelete" />
     </div>
@@ -6,6 +7,7 @@
 
 <script>
 import ContactsList from '@/components/ContactsList.vue'
+import AppHeader from '@/components/AppHeader.vue'
 export default {
     created() {
         this.loadContacts()
@@ -25,6 +27,7 @@ export default {
     },
     components: {
         ContactsList,
+        AppHeader
     }
 }
 </script>

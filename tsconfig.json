@@ -4,6 +4,7 @@
   "exclude": ["node_modules", "build/**/*"],
   "compilerOptions": {
     "strict": true,
+    "noImplicitThis": false,
     "sourceMap": true,
     "removeComments": true,
     "allowJs": true,
