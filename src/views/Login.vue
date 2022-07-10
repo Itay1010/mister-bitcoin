@@ -1,11 +1,11 @@
 <template>
-    <LoginForm :cb="onSubmit" />
+    <AuthForm @auth="onSubmit($event)" :isLogin="true" v-show="!isSubmitting" />
     <h1 class="logo center">Mister.Bit(Coin)</h1>
 </template>
 
 <script>
 import { authService } from "@/services/auth.service";
-import LoginForm from "../components/LoginForm.vue";
+import AuthForm from "../components/AuthForm.vue";
 export default {
     data() {
         return {
@@ -13,7 +13,7 @@ export default {
         }
     },
     components: {
-        LoginForm
+        AuthForm
     },
     methods: {
         async onSubmit(formData) {

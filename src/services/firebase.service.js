@@ -1,8 +1,8 @@
 import { getFirestore, collection, getDocs, addDoc, query, where, getDoc, doc, setDoc, limit, startAfter, orderBy, deleteDoc, onSnapshot }
     from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
-import store from "@/store";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged }
+    from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
 const pageSize = 8
 var gLastDocForPaging = null
 
@@ -15,7 +15,8 @@ export const firebaseService = {
     subscribe,
     signup,
     login,
-    getUser
+    getUser,
+    loginGuest
 }
 
 async function initFirebase() {
@@ -111,4 +112,9 @@ async function login(email, password) {
 function getUser() {
     const auth = getAuth()
     return auth.currentUser
+}
+
+async function loginGuest() {
+    const auth = getAuth()
+    signInAnonymously(auth)
 }

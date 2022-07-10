@@ -24,7 +24,13 @@ const doRegister = async ({ name, password }: UserCred) => {
     }
 }
 
+const loginGuest = async () => {
+    firebaseService.loginGuest()
+    return new (userService.User as any)('guestID', 'Guest Guest')
+}
+
 export const authService = {
     login,
-    doRegister
+    doRegister,
+    loginGuest
 }

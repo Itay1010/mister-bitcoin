@@ -1,21 +1,24 @@
 <template>
-    <form @submit.prevent="(ev) => onSubmit(ev)" class="auth-form center">
-        <h3>Sign up</h3>
+    <form @submit.prevent="onSubmit($event)" class="auth-form center">
+        <h3>{{isLogin ? 'Log in' : 'Sign up'}}</h3>
         <input type="text" name="name" v-model="formData.name" placeholder="Name" autocomplete="off">
         <input type="password" name="password" v-model="formData.password" placeholder="Password" autocomplete="off">
-        <button class="signup">Sign up</button>
+        <button class="signup">{{isLogin ? 'Log in' : 'Sign up'}}</button>
         <hr>
-        <RouterLink class="switch" to="/Login">Login</RouterLink>
+        <RouterLink class="switch" to="login" v-if="!isLogin">Log in</RouterLink>
+        <RouterLink class="switch" to="signup" v-else>Sign up</RouterLink>
     </form>
 </template>
 
 <script>
 export default {
+    emits: ['auth'],
     props: {
-        cb: {
-            type: Function,
+        isLogin: {
+            type: Boolean,
             required: true
         }
+
     },
     data() {
         return {
@@ -27,7 +30,7 @@ export default {
     },
     methods: {
         onSubmit() {
-            this.cb(this.formData)
+            this.$emit('auth', this.formData)
         }
     }
 }

@@ -1,25 +1,17 @@
 <template>
-    <SignupForm :cb="onSubmit" v-show="!isSubmitting" />
+    <AuthForm @auth="onSubmit($event)" :isLogin="false" v-show="!isSubmitting" />
     <h1 class="logo center">Mister.Bit(Coin)</h1>
-    <!-- <img class="graphic" :src="graphic" alt=""> -->
-    <!-- <img class="graphic-2" :src="graphic2" alt=""> -->
 </template>
 
 <script>
 import { authService } from '@/services/auth.service'
-import img from '@/assets/imgs/projections-graphic.svg'
-import img2 from '@/assets/imgs/analytics-graphic.svg'
-import SignupForm from '@/components/SignupForm.vue'
+import AuthForm from '@/components/AuthForm.vue'
 
 export default {
     data() {
         return {
             isSubmitting: false
         }
-    },
-    computed: {
-        graphic() { return img },
-        graphic2() { return img2 }
     },
     methods: {
         async onSubmit(formData) {
@@ -41,7 +33,7 @@ export default {
         }
     },
     components: {
-        SignupForm
+        AuthForm
     }
 }
 </script>

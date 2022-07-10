@@ -4,6 +4,7 @@ import ContactEdit from "@/views/ContactEdit.vue";
 import ContactDetails from "@/views/ContactDetails.vue";
 import Signup from "@/views/Signup.vue";
 import Login from '@/views/Login.vue';
+import Auth from '@/views/Auth.vue';
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -13,14 +14,22 @@ const router = createRouter({
       component: HomePage
     },
     {
-      path: '/signup',
-      name: 'signup',
-      component: Signup
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: Login
+      path: '/auth',
+      name: 'auth',
+      component: Auth,
+      children: [
+        {
+          path: 'signup',
+          name: 'signup',
+          component: Signup
+        },
+        {
+          path: 'login',
+          name: 'login',
+          component: Login
+        },
+    
+      ]
     },
     {
       path: '/contact',
