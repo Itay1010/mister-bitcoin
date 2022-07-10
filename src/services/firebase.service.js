@@ -1,8 +1,10 @@
 import { getFirestore, collection, getDocs, addDoc, query, where, getDoc, doc, setDoc, limit, startAfter, orderBy, deleteDoc, onSnapshot }
     from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js"
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged }
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInAnonymously, onAuthStateChanged, signOut }
     from "https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js";
+import store from "@/store";
+import router from "@/router";
 const pageSize = 8
 var gLastDocForPaging = null
 
@@ -16,7 +18,8 @@ export const firebaseService = {
     signup,
     login,
     getUser,
-    loginGuest
+    loginGuest,
+    logout
 }
 
 async function initFirebase() {
@@ -34,9 +37,19 @@ async function initFirebase() {
 
     //Initialize Auth
     const auth = getAuth(app)
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            store.dispatch({ type: 'loadUser', id: user.uid })
+            console.log('user')
+        } else {
+            router.push('/auth/signup')
+        }
+    })
 
     // debug:
     window.tsayriliApp = app
+    window.tsayriliAuth = auth
+    window.signoutUser = logout
 }
 
 async function addDocument(collectionName, document) {
@@ -69,7 +82,6 @@ async function saveDocument(collectionName, document, id) {
 }
 
 async function getDocuments(collectionName, filterBy) {
-    console.log('getDocuments - filterBy', filterBy)
     const db = getFirestore()
     var collectionRef = collection(db, collectionName)
     var orderByParams = []
@@ -109,7 +121,12 @@ async function login(email, password) {
     return res.user.uid
 }
 
-function getUser() {
+async function logout() {
+    const auth = getAuth()
+    await signOut(auth)
+}
+
+async function getUser() {
     const auth = getAuth()
     return auth.currentUser
 }

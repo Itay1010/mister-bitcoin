@@ -19,7 +19,6 @@ export default {
             try {
                 const user = await authService.doRegister(formData)
                 this.$store.dispatch({ type: 'setUser', user })
-                console.log(this.$store.getters.user)
                 this.$router.push('/')
             } catch (error) {
                 console.error('onSubmit - error', error)

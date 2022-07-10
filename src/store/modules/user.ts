@@ -18,7 +18,6 @@ export default {
         async loadUser({ commit }: { commit: Function }, { id }: { id: string }): Promise<void> {
             try {
                 const user = await userService.getUserProfile(id)
-                console.log('loadUser - user', user)
                 commit({ type: 'setUser', user })
             } catch (error) {
                 console.log('loadUser - error')

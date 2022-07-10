@@ -32,11 +32,6 @@ export default {
         }
     },
     async created() {
-        if (!this.user) {
-            const user = await firebaseService.getUser()
-            if (!user) return this.$router.push('/auth/signup')
-            this.$store.dispatch('loadUser', { id: user.uid })
-        }
         const rate = await bitcoinService.getRate()
         this.btcRate = rate
     },

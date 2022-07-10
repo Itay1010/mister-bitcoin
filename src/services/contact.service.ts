@@ -15,7 +15,6 @@ const remove = async (contactId: string) => {
 const save = async (contact: { [key: string]: any }): Promise<object> => {
     if (!contact._id) {
         contact._id = utilService.makeId(20)
-        console.log('new contact', contact.name)
         return contact
     }
     return contact

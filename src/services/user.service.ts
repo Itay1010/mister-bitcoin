@@ -17,7 +17,8 @@ function User(id: string, name = '') {
     this.id = id
     this.name = name
     this.imgUrl = `https://robohash.org/${name.split(' ')[0]}.org?gravatar=yes`
-    this.moves = []
+    this.moves = [],
+    this.coins = 100
 }
 
 export const userService = {
