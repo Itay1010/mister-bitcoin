@@ -1,35 +1,31 @@
 <template>
-    <form @submit.prevent="(ev) => onSubmit(ev)" class="signup-form center">
-        <h3>Sign up</h3>
-        <input type="text" name="name" v-model="formData.name" placeholder="Name" autocomplete="off">
-        <input type="password" name="password" v-model="formData.password" placeholder="Password" autocomplete="off">
-        <button class="signup">Sign up</button>
-        <hr>
-        <RouterLink to="/Login">Login</RouterLink>
-    </form>
+    <SignupForm :cb="onSubmit" v-show="!isSubmitting" />
+    <h1 class="logo center">Mister.Bit(Coin)</h1>
+    <!-- <img class="graphic" :src="graphic" alt=""> -->
+    <!-- <img class="graphic-2" :src="graphic2" alt=""> -->
 </template>
 
 <script>
 import { authService } from '@/services/auth.service'
-import { userService } from '@/services/user.service'
+import img from '@/assets/imgs/projections-graphic.svg'
+import img2 from '@/assets/imgs/analytics-graphic.svg'
+import SignupForm from '@/components/SignupForm.vue'
+
 export default {
-    destroyed() {
-        this.isSubmitting = false
-    },
     data() {
         return {
-            formData: {
-                name: '',
-                password: ''
-            },
             isSubmitting: false
         }
     },
+    computed: {
+        graphic() { return img },
+        graphic2() { return img2 }
+    },
     methods: {
-        async onSubmit() {
+        async onSubmit(formData) {
             this.isSubmitting = true
             try {
-                const user = await authService.doRegister(this.formData)
+                const user = await authService.doRegister(formData)
                 this.$store.dispatch({ type: 'setUser', user })
                 console.log(this.$store.getters.user)
                 this.$router.push('/')
@@ -43,6 +39,9 @@ export default {
                 this.isSubmitting = false
             }
         }
+    },
+    components: {
+        SignupForm
     }
 }
 </script>

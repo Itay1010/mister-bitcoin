@@ -13,21 +13,15 @@ const save = async (user: { [key: string]: any }): Promise<Object> => {
     return savedUser
 }
 
-const addUser = async (newUser: User): Promise<User> => {
-    const savedUser = await firebaseService.saveDocument(collectionName, newUser, newUser.id)
-    return newUser
-}
-
 function User(id: string, name = '') {
-    this.id = id,
-        this.name = name,
-        this.imgUrl = `https://robohash.org/${name.split(' ')[0]}.org?gravatar=yes`,
-        this.moves = []
+    this.id = id
+    this.name = name
+    this.imgUrl = `https://robohash.org/${name.split(' ')[0]}.org?gravatar=yes`
+    this.moves = []
 }
 
 export const userService = {
     getUserProfile,
     save,
     User,
-    addUser
 }

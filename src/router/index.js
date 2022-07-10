@@ -3,6 +3,7 @@ import HomePage from "@/views/HomePage.vue";
 import ContactEdit from "@/views/ContactEdit.vue";
 import ContactDetails from "@/views/ContactDetails.vue";
 import Signup from "@/views/Signup.vue";
+import Login from '@/views/Login.vue';
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -19,7 +20,7 @@ const router = createRouter({
     {
       path: '/login',
       name: 'login',
-      component: Signup
+      component: Login
     },
     {
       path: '/contact',
